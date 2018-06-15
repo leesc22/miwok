@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 
+
 class NumbersActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,23 +19,16 @@ class NumbersActivity : AppCompatActivity() {
         // Find the root view so we can add child views to it
         val rootView = findViewById<View>(R.id.rootView) as LinearLayout
 
-        // Create a variable to keep track of the current index position
-        var index = 0
-
-        // Keep looping until we've reached the end of the list (which means keep looping
-        // as long as the current index position is less than the length of the list)
-        while (index < words.size) {
+        // Keep looping until we've reached the end of the list
+        for (word in words) {
             // Create a new TextView
             val wordView = TextView(this)
 
             // Set the text to be word at the current index
-            wordView.text = words.get(index)
+            wordView.text = word
 
             // Add this TextView as another child to the root view of this layout
             rootView.addView(wordView)
-
-            // Increment the index variable by 1
-            index++
         }
     }
 }
