@@ -3,7 +3,7 @@ package com.example.android.miwok
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import android.widget.ListView
+import android.widget.GridView
 
 
 class NumbersActivity : AppCompatActivity() {
@@ -25,12 +25,12 @@ class NumbersActivity : AppCompatActivity() {
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
         // activity_numbers.xml layout file.
-        val listView = findViewById(R.id.list) as ListView
+        val gridView = findViewById(R.id.gridview) as GridView
 
         // Make the {@link ListView} use the {@link ArrayAdapter} we created above, so that the
         // {@link ListView} will display list items for each word in the list of words.
         // Do this by calling the setAdapter method on the {@link ListView} object and pass in
         // 1 argument, which is the {@link ArrayAdapter} with the variable name itemsAdapter.
-        listView.setAdapter(itemsAdapter)
+        gridView.setAdapter(itemsAdapter)
     }
 }
