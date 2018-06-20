@@ -2,14 +2,14 @@ package com.example.android.miwok
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_numbers.*
+import kotlinx.android.synthetic.main.word_list.*
 
 
 class NumbersActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_numbers)
+        setContentView(R.layout.word_list)
 
         // Create a list of words
         val words = arrayListOf<Word>()
@@ -22,8 +22,8 @@ class NumbersActivity : AppCompatActivity() {
         words.add(Word("six", "temmokka"))
         words.add(Word("seven", "kenekaku"))
         words.add(Word("eight", "kawinta"))
-        words.add(Word("nine", "wo'e"))
-        words.add(Word("ten", "na'aacha"))
+        words.add(Word("nine", "wo’e"))
+        words.add(Word("ten", "na’aacha"))
 
         val adapter = WordAdapter(this, words)
 
