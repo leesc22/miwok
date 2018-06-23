@@ -1,5 +1,8 @@
 package com.example.android.miwok
 
+/** Constant value that represents no image was provided for this word */
+const val NO_IMAGE_PROVIDED = -1
+
 /**
  * {@link Word} represents a vocabulary word that the user wants to learn.
  * It contains a default translation, a Miwok translation, and an image for that word.
@@ -11,7 +14,7 @@ package com.example.android.miwok
  * @param miwokTranslation is the word in the Miwok language
  */
 class Word constructor(var defaultTranslation: String, var miwokTranslation: String) {
-    var imageResourceId: Int = 0
+    var imageResourceId: Int = NO_IMAGE_PROVIDED
 
     /**
      * Create a new Word object.
@@ -25,4 +28,9 @@ class Word constructor(var defaultTranslation: String, var miwokTranslation: Str
     constructor(defaultTranslation: String, miwokTranslation: String, imageResourceId: Int) : this(defaultTranslation, miwokTranslation) {
         this.imageResourceId = imageResourceId
     }
+
+    /**
+     * Returns whether or not there is an image for this word.
+     */
+    fun hasImage(): Boolean = imageResourceId != NO_IMAGE_PROVIDED
 }
