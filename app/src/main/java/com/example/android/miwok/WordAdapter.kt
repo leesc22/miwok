@@ -1,11 +1,13 @@
 package com.example.android.miwok
 
 import android.app.Activity
+import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 
 /**
@@ -16,8 +18,9 @@ import android.widget.TextView
  *
  * @param context is the current context (i.e. Activity) that the adapter is being created in.
  * @param words is the list of {@link Word}s to be displayed.
+ * @param colorResourceId is the resource ID for the background color for this list of words
  */
-class WordAdapter(context:Activity, words:ArrayList<Word>) : ArrayAdapter<Word>(context, 0, words) {
+class WordAdapter(context:Activity, words:ArrayList<Word>, var colorResourceId: Int) : ArrayAdapter<Word>(context, 0, words) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         // Check if an existing view is being reused, otherwise inflate the view
         var listItemView = convertView
@@ -53,6 +56,13 @@ class WordAdapter(context:Activity, words:ArrayList<Word>) : ArrayAdapter<Word>(
             // Otherwise hide the ImageView (set visibility to GONE)
             imageView.visibility = View.GONE
         }
+
+        // Set the theme color for the list item
+        val textContainer = listItemView.findViewById(R.id.text_container) as LinearLayout
+        // Find the color that the resource ID maps to
+        val color = ContextCompat.getColor(context, colorResourceId)
+        // Set the background color of the text container View
+        textContainer.setBackgroundColor(color)
 
         // Return the whole list item layout (containing 2 TextViews) so that it can be shown in
         // the ListView.

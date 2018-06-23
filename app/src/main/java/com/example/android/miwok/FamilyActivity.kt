@@ -24,7 +24,7 @@ class FamilyActivity : AppCompatActivity() {
         words.add(Word("grandmother", "ama", R.drawable.family_grandmother))
         words.add(Word("grandfather", "paapa", R.drawable.family_grandfather))
 
-        val adapter = WordAdapter(this, words)
+        val adapter = WordAdapter(this, words, R.color. category_family)
 
         list.adapter = adapter
     }

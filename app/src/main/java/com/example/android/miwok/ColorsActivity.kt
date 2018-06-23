@@ -22,7 +22,7 @@ class ColorsActivity : AppCompatActivity() {
         words.add(Word("dusty yellow", "ṭopiisә", R.drawable.color_dusty_yellow))
         words.add(Word("mustard yellow", "chiwiiṭә", R.drawable.color_mustard_yellow))
 
-        val adapter = WordAdapter(this, words)
+        val adapter = WordAdapter(this, words, R.color.category_colors)
 
         list.adapter = adapter
     }

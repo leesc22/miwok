@@ -24,7 +24,7 @@ class PhrasesActivity : AppCompatActivity() {
         words.add(Word("Let’s go.", "yoowutis"))
         words.add(Word("Come here.", "әnni'nem"))
 
-        val adapter = WordAdapter(this, words)
+        val adapter = WordAdapter(this, words, R.color.category_phrases)
 
         list.adapter = adapter
     }

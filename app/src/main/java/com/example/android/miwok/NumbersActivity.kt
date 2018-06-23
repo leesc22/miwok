@@ -25,7 +25,7 @@ class NumbersActivity : AppCompatActivity() {
         words.add(Word("nine", "wo’e", R.drawable.number_nine))
         words.add(Word("ten", "na’aacha", R.drawable.number_ten))
 
-        val adapter = WordAdapter(this, words)
+        val adapter = WordAdapter(this, words, R.color.category_numbers)
 
         list.adapter = adapter
     }
