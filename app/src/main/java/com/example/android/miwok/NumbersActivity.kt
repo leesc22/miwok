@@ -1,15 +1,14 @@
 package com.example.android.miwok
 
+import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.word_list.*
-import android.view.View
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.Toast
 
 
 class NumbersActivity : AppCompatActivity() {
+
+    private lateinit var mediaPlayer: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,13 +31,10 @@ class NumbersActivity : AppCompatActivity() {
         val adapter = WordAdapter(this, words, R.color.category_numbers)
 
         list.adapter = adapter
-
-        list.onItemClickListener = object : OnItemClickListener {
-            override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val itemValue = list.getItemAtPosition(position)
-
-                Toast.makeText(applicationContext, "$position Item Value: $itemValue", Toast.LENGTH_SHORT).show()
-            }
+        
+        list.setOnItemClickListener { adapterView, view, i, l ->
+            mediaPlayer = MediaPlayer.create(this, R.raw.number_one)
+            mediaPlayer.start()
         }
     }
 }
