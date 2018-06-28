@@ -3,7 +3,6 @@ package com.example.android.miwok
 import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import kotlinx.android.synthetic.main.word_list.*
 
 
@@ -38,12 +37,6 @@ class NumbersActivity : AppCompatActivity() {
         list.setOnItemClickListener { adapterView, view, i, l ->
             // Get the {@link Word} object at the given position the user clicked on
             val word: Word = words.get(i)
-
-            Log.v("NumbersActivity", "Current word: $word")
-            // Example
-            // 06-28 14:05:26.536 16964-16964/com.example.android.miwok V/NumbersActivity: Current word: Word{defaultTranslation='one', miwokTranslation='lutti', audioResourceId=2131427350, imageResourceId=2131099768}
-            // 06-28 14:05:31.909 16964-16964/com.example.android.miwok V/NumbersActivity: Current word: Word{defaultTranslation='five', miwokTranslation='massokka', audioResourceId=2131427347, imageResourceId=2131099765}
-
 
             // Create and setup the {@link MediaPlayer} for the audio resource associated
             // with the current word
