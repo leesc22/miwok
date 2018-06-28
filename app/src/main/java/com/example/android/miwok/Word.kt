@@ -35,4 +35,8 @@ class Word constructor(var defaultTranslation: String, var miwokTranslation: Str
      * Returns whether or not there is an image for this word.
      */
     fun hasImage(): Boolean = imageResourceId != NO_IMAGE_PROVIDED
+
+    override fun toString(): String {
+        return "Word{defaultTranslation='$defaultTranslation', miwokTranslation='$miwokTranslation', audioResourceId=$audioResourceId, imageResourceId=$imageResourceId}";
+    }
 }
