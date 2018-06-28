@@ -12,8 +12,9 @@ const val NO_IMAGE_PROVIDED = -1
  * @param defaultTranslation is the word in a language that the user is already familiar with
  *                           (such as English)
  * @param miwokTranslation is the word in the Miwok language
+ * @param audioResourceId is the resource ID for the audio file associated with this word
  */
-class Word constructor(var defaultTranslation: String, var miwokTranslation: String) {
+class Word constructor(var defaultTranslation: String, var miwokTranslation: String, var audioResourceId: Int) {
     var imageResourceId: Int = NO_IMAGE_PROVIDED
 
     /**
@@ -23,9 +24,10 @@ class Word constructor(var defaultTranslation: String, var miwokTranslation: Str
      *                           (such as English)
      * @param miwokTranslation is the word in the Miwok language
      * @param imageResourceId is the drawable resource ID for the image associated with the word
+     * @param audioResourceId is the resource ID for the audio file associated with this word
      *
      */
-    constructor(defaultTranslation: String, miwokTranslation: String, imageResourceId: Int) : this(defaultTranslation, miwokTranslation) {
+    constructor(defaultTranslation: String, miwokTranslation: String, imageResourceId: Int, audioResourceId: Int) : this(defaultTranslation, miwokTranslation, audioResourceId) {
         this.imageResourceId = imageResourceId
     }
 
