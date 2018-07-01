@@ -62,6 +62,17 @@ class NumbersActivity : AppCompatActivity() {
         // Create and setup the {@link AudioManager} to request audio focus
         audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val playbackAttributes = AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+                    .build()
+            focusRequest = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
+                    .setAudioAttributes(playbackAttributes)
+                    .setOnAudioFocusChangeListener(audioFocusChangeListener)
+                    .build()
+        }
+
         // Create a list of words
         val words = arrayListOf<Word>()
 
@@ -94,14 +105,6 @@ class NumbersActivity : AppCompatActivity() {
             // with AUDIOFOCUS_GAIN_TRANSIENT.
             var result: Int
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                val playbackAttributes = AudioAttributes.Builder()
-                        .setUsage(AudioAttributes.USAGE_MEDIA)
-                        .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
-                        .build()
-                focusRequest = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
-                        .setAudioAttributes(playbackAttributes)
-                        .setOnAudioFocusChangeListener(audioFocusChangeListener)
-                        .build()
                 @TargetApi(Build.VERSION_CODES.O)
                 result = audioManager!!.requestAudioFocus(focusRequest)
             } else {
