@@ -1,5 +1,6 @@
 package com.example.android.miwok
 
+import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
@@ -10,20 +11,21 @@ import android.support.v4.app.FragmentPagerAdapter
  *
  * Create a new {@link CategoryAdapter} object.
  *
+ * @param context is the context of the app
  * @param fm is the fragment manager that will keep each fragment's state in the adapter
  *           across swipes.
  */
-class CategoryAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+class CategoryAdapter(var context: Context, fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
 
     /**
      * Return the {@link Fragment} that should be displayed for the given page number.
      */
     override fun getItem(position: Int): Fragment {
-        return if (position === 0) {
+        return if (position == 0) {
             NumbersFragment()
-        } else if (position === 1) {
+        } else if (position == 1) {
             FamilyFragment()
-        } else if (position === 2) {
+        } else if (position == 2) {
             ColorsFragment()
         } else {
             PhrasesFragment()
@@ -35,5 +37,17 @@ class CategoryAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(f
      */
     override fun getCount(): Int {
         return 4
+    }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return if (position == 0) {
+            context.getString(R.string.category_numbers)
+        } else if (position == 1) {
+            context.getString(R.string.category_family)
+        } else if (position == 2) {
+            context.getString(R.string.category_colors)
+        } else {
+            context.getString(R.string.category_phrases)
+        }
     }
 }
